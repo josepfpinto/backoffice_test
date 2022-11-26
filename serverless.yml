@@ -1,5 +1,5 @@
 ---
-service: serverless-react-boilerplate
+service: backoffice-test
 frameworkVersion: "3"
 useDotenv: true
 variablesResolutionMode: 20210326
@@ -9,12 +9,13 @@ disabledDeprecations:
 provider:
   name: aws
   runtime: nodejs12.x
-  region: ${opt:region, 'us-east-1'}
+  region: ${opt:region, 'eu-west-1'}
   stage: ${opt:stage, 'dev'}
   memorySize: 512
   timeout: 6
   logRetentionInDays: 7
   lambdaHashingVersion: 20201221 # for upcoming Serverless v3
+  profile: serverless_admin
 
   apiGateway:
     shouldStartNameWithService: true # for upcoming Serverless v3
@@ -58,14 +59,7 @@ functions:
 
 custom:
   distBucketUrl:
-    us-east-1:
-      # us-east-1 uses a different URL format than the other regions
-      Fn::Join:
-        - ""
-        - - https://s3.amazonaws.com/
-          - Ref: DistBucket
     default:
-      # All other regions
       Fn::Join:
         - ""
         - - https://s3-

@@ -4,7 +4,7 @@
 import { APIGatewayEvent } from "aws-lambda";
 import * as React from "react";
 import { renderToString } from "react-dom/server";
-
+import { StaticRouter } from "react-router-dom";
 import App from "../App";
 import ConfigContext from "../components/ConfigContext";
 import config from "./config";
@@ -19,7 +19,9 @@ export default async function render(_event: APIGatewayEvent): Promise<string> {
   const stats = (await import("../../dist/stats.json")) as unknown as Stats;
   const content = renderToString(
     <ConfigContext.Provider value={config}>
-      <App />
+      <StaticRouter basename={config.app.URL} location={_event.path}>
+        <App />
+      </StaticRouter>
     </ConfigContext.Provider>,
   );
   return html({ stats, content, config });

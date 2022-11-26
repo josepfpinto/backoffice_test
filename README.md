@@ -1,7 +1,6 @@
 # ♨️ serverless-react-boilerplate
 
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
-[![dependencies](https://img.shields.io/david/arabold/serverless-react-boilerplate.svg)](https://github.com/arabold/serverless-react-boilerplate)
 
 Lightweight boilerplate project to set up a React 17 web application on AWS Lambda using the Serverless Framework.
 
@@ -14,8 +13,6 @@ Lightweight boilerplate project to set up a React 17 web application on AWS Lamb
 - Built-in support for [code splitting](https://webpack.js.org/guides/code-splitting/) and [tree shaking](https://webpack.js.org/guides/tree-shaking/) to optimize page loading times.
 - Full [TypeScript](https://www.typescriptlang.org/) support using Babel 7 and Webpack 5, including custom [module resolution](https://www.typescriptlang.org/docs/handbook/module-resolution.html).
 - Working [Jest](https://jestjs.io/) test environment.
-
-[Looking for the plain JavaScript version of this boilerplate?](https://github.com/arabold/serverless-react-boilerplate/)
 
 ## Overview
 
