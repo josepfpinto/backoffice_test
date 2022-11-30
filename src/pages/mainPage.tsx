@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from 'react-router-dom';
 import useConfig from "../components/useConfig";
 import logo from "../logo.svg";
 
@@ -15,7 +15,9 @@ export default function MainPage() {
             To get started, edit <code>src/browser/App.jsx</code> and save to reload.
         </p>
         <p className="App-intro">
-            Just a test...
+            <Link to="/counter">
+                <button> Counter </button>
+            </Link>
         </p>
         </div>
     );

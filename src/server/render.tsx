@@ -10,6 +10,9 @@ import ConfigContext from "../components/ConfigContext";
 import config from "./config";
 import html from "./html";
 import { Stats } from "./types";
+import { Provider } from 'react-redux';
+
+import store from "../store/store";
 
 /**
  * Server-side rendering
@@ -20,7 +23,9 @@ export default async function render(_event: APIGatewayEvent): Promise<string> {
   const content = renderToString(
     <ConfigContext.Provider value={config}>
       <StaticRouter basename={config.app.URL} location={_event.path}>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </StaticRouter>
     </ConfigContext.Provider>,
   );

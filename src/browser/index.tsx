@@ -3,16 +3,14 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 
 import "./index.css";
-
-/**
- * Frontend code running in browser
- */
 import * as React from "react";
 import { hydrate } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from 'react-redux';
 import ConfigContext from "../components/ConfigContext";
 import { Config } from "../server/config";
 import App from "../App";
+import store from "../store/store";
 
 const config = (window as any).__CONFIG__ as Config;
 delete (window as any).__CONFIG__;
@@ -24,9 +22,11 @@ const render = () => {
     <>
       {/* The configuration is the outmost component. This allows us to read the configuration even in the theme */}
       <ConfigContext.Provider value={config}>
-        <BrowserRouter basename={basename}>
-          <App />
-        </BrowserRouter>
+      <Provider store={store}>
+          <BrowserRouter basename={basename}>
+            <App />
+          </BrowserRouter>
+        </Provider>
       </ConfigContext.Provider>
     </>,
     document.getElementById("root"),

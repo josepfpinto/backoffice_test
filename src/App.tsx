@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import useConfig from "./components/useConfig";
 import MainPage from "./pages/mainPage";
 import ErrorPage from "./pages/errorPage";
-import TestPage from "./pages/testPage";
+import CounterPage from "./pages/counterPage";
 
 /**
  * Our Web Application
@@ -17,8 +17,8 @@ export default function App() {
       <Route exact path="/">
         <MainPage />
       </Route>
-      <Route exact path="/test">
-        <TestPage />
+      <Route exact path="/counter">
+        <CounterPage />
       </Route>
       <Route>
         <ErrorPage />
