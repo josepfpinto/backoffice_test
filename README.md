@@ -122,20 +122,3 @@ npx sls remove
 ```
 
 This will delete all resources but the distribution S3 bucket. As it still contains the bundles you will have to delete the bucket manually for now.
-
-## Changelog
-
-### 2021-10-10
-
-- Updated dependencies to the latest versions. This includes specifically the Webpack Dev Server 4.x.
-- Restructured the project structure to be more consistent. `App.tsx` and related files have been moved out for the `browser` folder directly into `src` as it is used by both the server and the browser rendering. You should rarely need to touch the contents of the `browser` or the `server` folder.
-- Updated the documentation (this file you're currently reading)
-
-### 2021-06-04
-
-- Updated to React 17
-- React "Fast Refresh" (previously known as "Hot Reloading") using the [React Refresh Webpack Plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin).
-- Built-in support for [code splitting](https://webpack.js.org/guides/code-splitting/) and [tree shaking](https://webpack.js.org/guides/tree-shaking/) to optimize page loading times.
-- Full [TypeScript](https://www.typescriptlang.org/) support using Babel 7 and Webpack 5, including custom [module resolution](https://www.typescriptlang.org/docs/handbook/module-resolution.html).
-- Handle server-side errors more gracefully. Update `handler.ts` to add your own custom error handling code such as [Youch](https://github.com/poppinss/youch).
-- Code cleanup and simplification
