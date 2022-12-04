@@ -1,9 +1,15 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { useAppSelector } from "src/hooks";
 import useConfig from "../components/useConfig";
 import logo from "../logo.svg";
 
 export default function MainPage() {
+
+    const authStatus = useAppSelector((state) => state.authStatus.value);
+    console.log("MainPage")
+    console.log(authStatus)
+
     const { app } = useConfig();
     return (
         <div className="App">
@@ -15,7 +21,7 @@ export default function MainPage() {
             To get started, edit <code>src/browser/App.jsx</code> and save to reload.
         </p>
         <p className="App-intro">
-            <Link to="/counter">
+            <Link to="/app/counter">
                 <button> Counter </button>
             </Link>
         </p>

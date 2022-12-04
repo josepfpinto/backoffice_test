@@ -9,10 +9,9 @@ import App from "../App";
 import ConfigContext from "../components/ConfigContext";
 import config from "./config";
 import html from "./html";
-import { Stats } from "./types";
 import { Provider } from 'react-redux';
-
 import store from "../store/store";
+import { Stats } from "src/types";
 
 /**
  * Server-side rendering

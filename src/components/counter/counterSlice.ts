@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit'
-import { CounterState } from 'src/type';
+import { CounterState } from 'src/types';
 import type { RootState } from '../../store/store'
 
 // Each slice file should define a type for its initial state value,
@@ -19,13 +19,13 @@ export const counterSlice = createSlice({
             state: Draft<typeof initialState>,
             // action: PayloadAction<typeof initialState>,
         ) => {
-            state.value += 1
+            state.value += 1;
         },
         decrement: (
             state: Draft<typeof initialState>,
             // action: PayloadAction<typeof initialState>,
         ) => {
-            state.value -= 1
+            state.value -= 1;
         },
     },
 });

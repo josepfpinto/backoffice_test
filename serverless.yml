@@ -56,6 +56,13 @@ functions:
           path: /{any+}
           method: any
           cors: true
+  auth:
+    handler: auth.auth
+    events:
+      - http:
+          path: /auth
+          method: post
+          cors: true
 
 custom:
   distBucketUrl:

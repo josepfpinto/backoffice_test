@@ -1,23 +1,19 @@
 import React, { useState, FC } from 'react'
-
 import { useAppSelector, useAppDispatch } from '../../hooks'
-
 import { counterActions } from './counterSlice'
 
 // import { Button, Container } from '@mui/material';
 import * as styles from './counterStyled';
 
-type dispatchFn = () => void;
-
 const Counter: FC = () => {
     const counter = useAppSelector((state) => state.counter.value);
     const dispatch = useAppDispatch();
 
-    const decrement: dispatchFn = () => {
+    const decrement = () => {
         dispatch(counterActions.decrement());
     };
 
-    const increment: dispatchFn = () => {
+    const increment = () => {
         dispatch(counterActions.increment());
     };
 

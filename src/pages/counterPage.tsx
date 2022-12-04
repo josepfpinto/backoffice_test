@@ -8,7 +8,7 @@ export default function CounterPage() {
             <div>
                 This is a Test page...
             </div>
-            <Link to="/">
+            <Link to="/app/home">
                 <button> Back Home </button>
             </Link>
             <Counter/>

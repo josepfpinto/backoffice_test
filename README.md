@@ -3,6 +3,7 @@
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
 
 Lightweight boilerplate project to set up a React 17 web application on AWS Lambda using the Serverless Framework.
+Based on: https://www.serverless.com/blog/react-js-on-aws-lambda
 
 ## Key Features
 
@@ -20,6 +21,28 @@ Lightweight boilerplate project to set up a React 17 web application on AWS Lamb
 The idea is that we use AWS Lambda to serve the dynamic part of our app, the server-side logic, and perform the server-side rendering. For all static data like images, stylesheets, and even the app's `index.tsx` that is loaded in the browser, we use an S3 bucket for public hosting.
 
 All resources, including the S3 bucket for hosting static content, are created and configured automatically when your app is deployed the first time. You can make changes to the default setup by updating your `serverless.yml` to your linking.
+
+### Steps to start
+
+1. Clone: https://github.com/josepfpinto/backoffice_test
+2. `npm install react react-dom`
+3. Add your aws profile to `serverless.yml` and adjust aws region here (if necessary)
+4. `npm i react-router-dom --save`
+5. `npm install redux react-redux redux-thunk`
+6. (`npm install -D @reduxjs/toolkit @types/redux @types/react-redux @types/redux-thunk`)
+7. Try `npm start` and enter in http://localhost:3000/ (it should work!)
+8. `npx sls deploy`
+9. Save the provided API url -> simmilar to https://xxx.execute-api.eu-west-1.amazonaws.com/dev/ 
+10. Configure `Cognito`:
+  - Go to `Amazon Cognito Console`.
+  - Choose `Manage User Pools`.
+  - Select `Create a user pool`. Enter the name for your user pool and select `Review defaults`. Finally select the `Create pool`.
+  - Select `App clients` under the `General settings` tab and choose `Add an app client`. Give a name for the app client and create an app client.
+  - Choose the `App client` setting under the `App integration` tab. Tick `cognito user pool` as identity provider. Add `callback URL`, indicating where the user will be redirected after a successful sign-in. For simplicity select `Authorization code grant` as `Allowed OAuth Flow`. And choose `Save Changes`.
+  - Select `Domain name` under `App integration` tab and add your domain.
+  - For more detailed info check this link: https://medium.com/@ravindu.18/authentication-using-amazon-cognito-hosted-ui-for-simple-react-application-part-1-6aa18889b5ab
+11. Now you can access your API via Cognito here: https://<mydomain>.auth.<region>.amazoncognito.com/login?response_type=code&client_id=<client id>&redirect_uri=<callback url>
+12. Open up pages folder and start editing the content
 
 ### Serverless
 
