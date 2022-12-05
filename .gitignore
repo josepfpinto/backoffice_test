@@ -12,3 +12,6 @@ dist
 
 # Other
 .DS_Store
+
+# Sensitive data
+src/components/auth/userPool.ts
