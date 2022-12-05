@@ -10,7 +10,6 @@ export async function FetchData() {
   }
 
   const responseJson = await response.json();
-  console.log(responseJson);
 
   if (responseJson === undefined) {
     console.log(`responseJson is undifined...`);
