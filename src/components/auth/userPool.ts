@@ -6,3 +6,6 @@ const poolData = {
 };
 
 export default new CognitoUserPool(poolData);
+
+// josepfpinto@gmail.com
+// sZc5^cK%ubpQ_
