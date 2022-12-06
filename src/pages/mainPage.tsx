@@ -7,9 +7,6 @@ import logo from "../logo.svg";
 
 export default function MainPage() {
     const [apiData, setApiData] = useState('');
-    const authStatus = useAppSelector((state) => state.authStatus.value);
-    console.log("MainPage")
-    console.log(authStatus)
 
     useEffect(() => {
         FetchData().then((data) => {setApiData(data);})

@@ -30,6 +30,7 @@ const Login = () => {
                 ></input>
                 <label htmlFor="password">Password</label>
                 <input
+                    type= "password"
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                 ></input>
@@ -40,6 +41,3 @@ const Login = () => {
 };
 
 export default Login;
-
-// josepfpinto@gmail.com
-// sZc5^cK%ubpQ_

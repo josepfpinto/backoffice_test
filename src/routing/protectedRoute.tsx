@@ -1,14 +1,20 @@
 import React from "react";
 import { Redirect, Route, RouteProps } from "react-router-dom";
-import { useAppSelector } from "src/hooks";
+import { useAppSelector } from "../hooks";
+import Pool from "../components/auth/userPool";
 
 export default function ProtectedRoute({...routeProps}: RouteProps) {
 
-    const authStatus:boolean = useAppSelector((state) => state.authStatus.value);
+    // Fetching if user is logged in via Pool
+    const user = Pool.getCurrentUser();
     
-if(authStatus) {
-    return <Route {...routeProps} />;
-} else {
-    return <Redirect to={{ pathname: "/login" }} />;
-}
+    // Note: everytime we refrech the page or enter the url directly in the browser the redux state resets and we loose the authStatus
+    // const authStatus:boolean = useAppSelector((state) => state.authStatus.value);
+    
+    // if the user is not logged in we rediect him to login
+    if(user) {
+        return <Route {...routeProps} />;
+    } else {
+        return <Redirect to={{ pathname: "/login" }} />;
+    }
 };
