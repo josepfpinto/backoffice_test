@@ -7,6 +7,8 @@ import { AuthStatusState } from 'src/types';
 // Define the initial state using that type
 const initialState: AuthStatusState = {
     value: false as boolean,
+    idtoken: '' as string,
+    accessToken: '' as string,
 } as const;
 
 export const authStatusSlice = createSlice({
@@ -18,7 +20,9 @@ export const authStatusSlice = createSlice({
             state: Draft<typeof initialState>,
             action: PayloadAction<typeof initialState>,
         ) => {
-            state.value = action.payload.value;
+            state.value=action.payload.value;
+            state.idtoken=action.payload.idtoken;
+            state.accessToken=action.payload.accessToken;
         },
     },
 });

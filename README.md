@@ -30,10 +30,13 @@ All resources, including the S3 bucket for hosting static content, are created a
 4. `npm i react-router-dom --save`
 5. `npm install redux react-redux redux-thunk`
 6. (`npm install -D @reduxjs/toolkit @types/redux @types/react-redux @types/redux-thunk`)
-7. Try `npm start` and enter in http://localhost:3000/ (it should work!)
-8. `npx sls deploy`
-9. Save the provided API url -> simmilar to https://xxx.execute-api.eu-west-1.amazonaws.com/dev/ 
-10. Configure `Cognito`:
+7. Create a secrets file with your pool info in `src/secrets.ts` with:
+  - `export const UserPoolId = "xxx";`
+  - `export const ClientId = "xxx";`
+8. Try `npm start` and enter in http://localhost:3000/ (it should work!)
+9. `npx sls deploy`
+10. Save the provided API url -> simmilar to https://xxx.execute-api.eu-west-1.amazonaws.com/dev/ 
+11. Configure `Cognito`:
   - Go to `Amazon Cognito Console`.
   - Choose `Manage User Pools`.
   - Select `Create a user pool`. Enter the name for your user pool and select `Review defaults`. Finally select the `Create pool`.
@@ -41,8 +44,8 @@ All resources, including the S3 bucket for hosting static content, are created a
   - Choose the `App client` setting under the `App integration` tab. Tick `cognito user pool` as identity provider. Add `callback URL`, indicating where the user will be redirected after a successful sign-in. For simplicity select `Authorization code grant` as `Allowed OAuth Flow`. And choose `Save Changes`.
   - Select `Domain name` under `App integration` tab and add your domain.
   - For more detailed info check this link: https://medium.com/@ravindu.18/authentication-using-amazon-cognito-hosted-ui-for-simple-react-application-part-1-6aa18889b5ab
-11. Now you can access your API via Cognito here: https://<mydomain>.auth.<region>.amazoncognito.com/login?response_type=code&client_id=<client id>&redirect_uri=<callback url>
-12. Open up pages folder and start editing the content
+12. Now you can access your API via Cognito here: https://<mydomain>.auth.<region>.amazoncognito.com/login?response_type=code&client_id=<client id>&redirect_uri=<callback url>
+13. Open up pages folder and start editing the content
 
 ### Serverless
 

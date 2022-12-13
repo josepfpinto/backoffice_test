@@ -3,14 +3,16 @@ export type dispatchFn = () => void;
 export type dispatchFn = (newStatus:boolean) => void;
 
 export type Stats = {
-    scripts: string[]
-    styles: string[]
+    scripts: string[],
+    styles: string[],
 }
 
 export type CounterState = {
-    value: number
+    value: number,
 };
 
 export type AuthStatusState = {
-    value: boolean
+    value: boolean,
+    idtoken: string,
+    accessToken: string,
 };

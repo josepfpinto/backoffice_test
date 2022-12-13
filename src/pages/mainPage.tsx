@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import { FetchData } from "src/api/testApi";
-import { useAppSelector } from "src/hooks";
+import { FetchData } from "../api/testApi";
 import useConfig from "../components/useConfig";
 import logo from "../logo.svg";
+import { useAppSelector, useAppDispatch } from "../hooks";
 
 export default function MainPage() {
     const [apiData, setApiData] = useState('');
+    const authStatus = useAppSelector((state) => state.authStatus);
 
     useEffect(() => {
-        FetchData().then((data) => {setApiData(data);})
+        FetchData(authStatus.idtoken).then((data) => {setApiData(data);})
     }, [])
     
 
     const { app } = useConfig();
+
     return (
         <div className="App">
         <header className="App-header">

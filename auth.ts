@@ -1,5 +1,6 @@
 'use strict';
 import { Context, APIGatewayEvent, APIGatewayProxyResultV2 } from "aws-lambda";
+import { ClientId, frontend_api_url } from "./src/secrets";
 
 const axios = require('axios');
 
@@ -15,8 +16,8 @@ module.exports.auth = async (event: APIGatewayEvent, _context: Context) => {
     const details = {
         grant_type: "authorization_code",
         code: acode,
-        client_id: "46l27c2cgu4nr1fkck9tli6ofm",
-        redirect_uri: "https://yb03tdm20c.execute-api.eu-west-1.amazonaws.com/dev/home"
+        client_id: ClientId,
+        redirect_uri: frontend_api_url
     };
 
     const formBody = keys.map(key => `${encodeURIComponent(key)}=${encodeURIComponent(details[key])}`).join("&");

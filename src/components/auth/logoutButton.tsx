@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { AccountContext } from "./account";
 
 const LogoutButton = () => {
-    const { getSession, logout } = useContext(AccountContext);
+    const { logout } = useContext(AccountContext);
     const history = useHistory();
 
     const logoutClick = async () => {

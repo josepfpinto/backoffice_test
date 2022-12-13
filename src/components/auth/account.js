@@ -3,22 +3,30 @@ import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 import Pool from "./userPool";
 import { useAppSelector, useAppDispatch } from "src/hooks";
 import { authStateActions } from "./authStatusSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const AccountContext = createContext();
 
 const Account = (props) => {
 
-    const authStatus = useAppSelector((state) => state.authStatus.value);
-    const dispatch = useAppDispatch();
+    // const authStatus = useAppSelector((state) => state.authStatus);
+    // const dispatch = useAppDispatch();
+    const authStatus = useSelector((state) => state.authStatus);
+    const dispatch = useDispatch();
+
 
     // function that changes AuthStatus from redux store
-    const changeAuthStatus = (newStatus) => {
+    const changeAuthStatus = (newStatus, idToken, accessToken) => {
         const newState = {
             value: newStatus,
+            idtoken: idToken,
+            accessToken: accessToken,
         };
         dispatch(authStateActions.change(newState));
     };
 
+    /*
     const getSession = async () => {
         return await new Promise((resolve, reject) => {
             const user = Pool.getCurrentUser();
@@ -26,12 +34,12 @@ const Account = (props) => {
             if (user) {
                 user.getSession((err, session) => {
                     if (err) {
-                        changeAuthStatus(false)
+                        changeAuthStatus(false, '', '')
                         reject(err);
                     } else {
                         console.log("SESSION")
                         console.log(session);
-                        changeAuthStatus(true)
+                        changeAuthStatus(true, '', '')
                         resolve(session);
                     };
                 });
@@ -39,7 +47,8 @@ const Account = (props) => {
                 reject();
             };
         });
-    };
+    }; 
+    */
 
     const authenticate = async (Username, Password) => {
         return await new Promise((resolve, reject) => {
@@ -48,15 +57,15 @@ const Account = (props) => {
 
             user.authenticateUser(authDetails, {   
                 onSuccess: (data) => {
-                    if (!authStatus) { changeAuthStatus(true); }
+                    changeAuthStatus(true, data.idToken.jwtToken, data.accessToken.jwtToken);
                     resolve(data);
                 },
                 onFailure: (err) => {
-                    if (authStatus) { changeAuthStatus(false); }
+                    // changeAuthStatus(false, '', '');
                     reject(err);
                 },
                 newPasswordRequired: (data) => {
-                    if (authStatus) { changeAuthStatus(false); }
+                    // changeAuthStatus(false, '', '');
                     console.log("newPasswordRequired: ", data);
                     resolve(data);
                 },
@@ -70,7 +79,7 @@ const Account = (props) => {
             console.log(user);
             if (user) {
                 user.signOut();
-                changeAuthStatus(false);
+                changeAuthStatus(false, '', '');
                 resolve(true);
             } else {
                 reject(false);
@@ -82,7 +91,7 @@ const Account = (props) => {
     };
 
     return(
-        <AccountContext.Provider value={{ authenticate, getSession, logout }}>
+        <AccountContext.Provider value={{ authenticate, logout }}>
             {props.children}
         </AccountContext.Provider>
     )

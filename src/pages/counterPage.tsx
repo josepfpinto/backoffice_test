@@ -1,5 +1,5 @@
 import React from "react";
-import Counter from "src/components/counter/Counter";
+import Counter from "../components/counter/Counter";
 import { Link } from 'react-router-dom';
 
 export default function CounterPage() {
