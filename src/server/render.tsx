@@ -11,7 +11,7 @@ import config from "./config";
 import html from "./html";
 import { Provider } from 'react-redux';
 import store from "../store/store";
-import { Stats } from "src/types";
+import { Stats } from "../types";
 
 /**
  * Server-side rendering

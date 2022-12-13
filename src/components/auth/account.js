@@ -1,7 +1,6 @@
 import React, { createContext } from "react";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 import Pool from "./userPool";
-import { useAppSelector, useAppDispatch } from "src/hooks";
 import { authStateActions } from "./authStatusSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";

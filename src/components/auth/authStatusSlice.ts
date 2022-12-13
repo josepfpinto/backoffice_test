@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit'
-import { AuthStatusState } from 'src/types';
+import { AuthStatusState } from '../../types';
 
 // Each slice file should define a type for its initial state value,
 // so that createSlice can correctly infer the type of state in each case reducer.

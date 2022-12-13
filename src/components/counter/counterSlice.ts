@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit'
-import { CounterState } from 'src/types';
-import type { RootState } from '../../store/store'
+import { CounterState } from '../../types';
 
 // Each slice file should define a type for its initial state value,
 // so that createSlice can correctly infer the type of state in each case reducer.

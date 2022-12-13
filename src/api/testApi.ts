@@ -1,5 +1,4 @@
 import { backend_api_url } from "../secrets";
-import Pool from "../components/auth/userPool";
 
 export async function FetchData(token:string) {
 
