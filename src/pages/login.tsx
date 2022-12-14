@@ -12,8 +12,8 @@ const Login = () => {
     const onSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
 
-        authenticate(email, password).then((data: any) => {
-            console.log("Logged in!: ", data);
+        authenticate(email, password).then(() => {
+            console.log("Logged in!");
             history.push("/");
         }).catch((err: any) => {
             console.error("Failed to login: ", err);

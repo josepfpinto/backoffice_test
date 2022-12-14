@@ -11,7 +11,6 @@ export default function AppLayout() {
         <div>
             <Account>
                 <Nav />
-            </Account> 
             <Switch>
                 <Route exact path="/app/home">
                     <MainPage />
@@ -21,6 +20,7 @@ export default function AppLayout() {
                 </Route>
             </Switch>
             <Redirect from="/app" to="/app/home" exact />
+            </Account>
         </div>
     );
 }

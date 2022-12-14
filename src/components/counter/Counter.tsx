@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react'
+import React, { FC } from 'react'
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import { counterActions } from './counterSlice'
 

@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { FetchData } from "../api/testApi";
 import useConfig from "../components/useConfig";
 import logo from "../logo.svg";
-import { useAppSelector, useAppDispatch } from "../hooks";
+import { AccountContext } from "../components/auth/account";
 
 export default function MainPage() {
+    const { getSession } = useContext(AccountContext);
     const [apiData, setApiData] = useState('');
-    const authStatus = useAppSelector((state) => state.authStatus);
 
     useEffect(() => {
-        FetchData(authStatus.idtoken).then((data) => {setApiData(data);})
+        getSession().then((session: any) => {
+            FetchData(session.idToken.jwtToken).then((data) => {setApiData(data);})
+        }).catch((err: any) => {
+            console.error("Failed to get session: ", err);
+        });
+
     }, [])
     
-
     const { app } = useConfig();
 
     return (

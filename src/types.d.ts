@@ -10,9 +10,3 @@ export type Stats = {
 export type CounterState = {
     value: number,
 };
-
-export type AuthStatusState = {
-    value: boolean,
-    idtoken: string,
-    accessToken: string,
-};

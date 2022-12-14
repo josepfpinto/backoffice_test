@@ -3,7 +3,7 @@ import { backend_api_url } from "../secrets";
 export async function FetchData(token:string) {
 
   console.log('TOKEN:')
-  console.log(token)
+  console.log(token) // TO REMOVE...
 
   return fetch(backend_api_url, {
     method: 'GET',
@@ -11,7 +11,8 @@ export async function FetchData(token:string) {
       'Content-Type': 'application/json',
       'Authorization': token,
       'Accept': '*/*',
-    }
+    },
+    mode: 'cors',
   }).then(async function(response) {
     let apiResponse: string = '';
     
